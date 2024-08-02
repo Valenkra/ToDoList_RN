@@ -1,36 +1,51 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Image } from 'react-native';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
 import ToDo from './components/todo.js';
+import { Colors } from './Colors.js';
+import InputValues from './components/input.js';
+import { TextInput } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <View>
-        <Text>To Do's</Text>
-      </View>
-      <ToDo title="Soy puta"></ToDo>
-      <Text style={styles.text}>Soy tu amiga Valen, una trolsita azul cariñosita</Text>
-      <StatusBar style="auto" />
-      <Image source={require('./assets/img/trolls.webp')} style={{width:200, height:300}}/>
-    </View>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <Text style={{fontSize: scale(30), fontWeight: 600, color: Colors.orange}}>To Do's</Text>
+        </View>
+        <ToDo title="Soy puta"></ToDo>
+        <InputValues></InputValues>
+      </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({ 
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.darkerBlack,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    width: '100%',
+    marginTop: verticalScale(40)
   },
   text:{
     fontSize: 40
   },
   header:{
-    flex: 1,
-    backgroundColor: '#000000',
-    width: '100%'
+    flex: scale(1),
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.darkerBlack,
+    shadowColor: Colors.orange,
+    paddingVertical: scale(4),
+    shadowOffset: {
+      width: 0,
+      height: 15
+    },
+    shadowRadius: 5,
+    shadowOpacity: 1,
+    maxHeight: verticalScale(50),
+    marginBottom: verticalScale(20)
   }
 });
