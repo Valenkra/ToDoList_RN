@@ -3,18 +3,23 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Image } from 'react-native';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
 import ToDo from './components/todo.js';
-import { Colors } from './Colors.js';
+import { Colors } from './resources/Colors.js';
 import InputValues from './components/input.js';
 import { TextInput } from 'react-native';
+import { InfoIcon } from './resources/Icons.js';
+import { useState } from 'react';
+
 
 export default function App() {
+  const [ToDos, setToDos] = useState([]);
+
   return (
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <Text style={{fontSize: scale(30), fontWeight: 600, color: Colors.orange}}>To Do's</Text>
         </View>
-        <ToDo title="Soy puta"></ToDo>
-        <InputValues></InputValues>
+        <ToDo title="Soy poti"></ToDo>
+        <InputValues ToDos={ToDos} setToDos={setToDos}></InputValues>
       </SafeAreaView>
   );
 }

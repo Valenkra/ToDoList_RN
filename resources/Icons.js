@@ -1,0 +1,1 @@
+export {default as InfoIcon} from './../assets/icons/ic_more_info.svg';

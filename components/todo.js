@@ -2,7 +2,7 @@ import { useState } from "react"
 import { StyleSheet, TouchableOpacity, View, Text } from "react-native"
 import { CheckBox } from "react-native-elements"
 import { scale, verticalScale } from "react-native-size-matters";
-import { Colors } from "../Colors";
+import { Colors } from "../resources/Colors";
 
 const ToDo = ({title}) => {
     const [checked, setChecked] = useState(false);
