@@ -8,17 +8,18 @@ import InputValues from './components/input.js';
 import { TextInput } from 'react-native';
 import { InfoIcon } from './resources/Icons.js';
 import { useState } from 'react';
+import ListToDo from './components/listToDo.js';
 
 
 export default function App() {
   const [ToDos, setToDos] = useState([]);
-
+  console.log(ToDos)
   return (
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <Text style={{fontSize: scale(30), fontWeight: 600, color: Colors.orange}}>To Do's</Text>
         </View>
-        <ToDo title="Soy poti"></ToDo>
+        <ListToDo ToDos={ToDos} setToDo={setToDos}></ListToDo>
         <InputValues ToDos={ToDos} setToDos={setToDos}></InputValues>
       </SafeAreaView>
   );

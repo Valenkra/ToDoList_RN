@@ -2,7 +2,7 @@ import { TextInput, StyleSheet } from "react-native";
 import { View } from "react-native";
 import { Colors } from "../resources/Colors";
 import { scale } from "react-native-size-matters";
-import { Button } from "react-native-elements";
+import MyButton from "./Button";
 
 const InputValues = ({ToDos, setToDos}) => {
     const submiting = (e) => {
@@ -14,10 +14,13 @@ const InputValues = ({ToDos, setToDos}) => {
           }]);
     }
     return (
-        <TextInput
-        placeholder="¿Qué necesitas hacer?" 
-        style={styles.input}
-        onSubmitEditing={submiting}/>
+        <View>
+            <TextInput
+            placeholder="¿Qué necesitas hacer?" 
+            style={styles.input}
+            onSubmitEditing={submiting}/>
+            <MyButton sendText="Enviar"></MyButton>
+        </View>
     );
 }
 
