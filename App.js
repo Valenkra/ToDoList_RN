@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { Image } from 'react-native';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
-import ToDo from './components/todo.js';
 import { Colors } from './resources/Colors.js';
 import InputValues from './components/input.js';
-import { TextInput } from 'react-native';
-import { InfoIcon } from './resources/Icons.js';
 import { useState } from 'react';
 import ListToDo from './components/listToDo.js';
 import { ScrollView } from 'react-native';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
-  const [ToDos, setToDos] = useState([]);
+  const [ToDos, setToDos] = useState(AsyncStorage.getItem("TODO") ? JSON.parse(AsyncStorage.getItem("TODO")) : []);
+  useEffect(()=> {
+    if(ToDos){
+      AsyncStorage.setItem("TODO", JSON.stringify(ToDos));
+    }
+  }, [ToDos])
+
   console.log(ToDos)
+
+
   return (
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>

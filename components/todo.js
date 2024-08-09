@@ -1,11 +1,12 @@
 import { useState } from "react"
-import { StyleSheet, TouchableOpacity, View, Text } from "react-native"
+import { StyleSheet, View, Text } from "react-native"
 import { CheckBox } from "react-native-elements"
 import { scale, verticalScale } from "react-native-size-matters";
 import { Colors } from "../resources/Colors";
 
-const ToDo = ({element}) => {
+const ToDo = ({index, element, ToDos, setToDo}) => {
     const [checked, setChecked] = useState(element.tachado);
+
     const change = () => {
         (checked == false) ? setChecked(true) : setChecked(false);
     }
@@ -20,10 +21,17 @@ const ToDo = ({element}) => {
             (isChecked == true) ? styles.checked : styles.unchecked]
     }
 
+    const eliminar = () => {
+        let newToDo = ToDos;
+        newToDo.splice(index,1);
+        setToDo([...newToDo]);
+    }
+
     return (
         <View style={getContainerStyle(checked)}>
             <CheckBox onPress={change} checkedIcon='dot-circle-o' checkedColor={Colors.orange} uncheckedIcon='circle-o' checked={checked}/>
             <Text style={getLabelStyle(checked)}>{element.contenido}</Text>
+            <CheckBox onPress={eliminar} uncheckedIcon='clear' checkedIcon='clear' iconRight iconType='material' checkedColor='red' checked={false}/>
         </View>
     )
 }
@@ -36,7 +44,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start',
         backgroundColor: Colors.white,
-        width: '80%',
         backgroundColor: Colors.white,
         paddingVertical: verticalScale(5),
         borderRadius: scale(3),

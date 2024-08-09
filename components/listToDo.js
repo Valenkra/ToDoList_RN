@@ -6,7 +6,7 @@ const ListToDo = ({ToDos, setToDo}) => {
     const views = []
     for (let i = 0; i < ToDos.length; i++) {
         views.push(
-            <ToDo element={ToDos[i]}></ToDo>
+            <ToDo index={i} element={ToDos[i]} ToDos={ToDos} setToDo={setToDo} ></ToDo>
         );
     }
     return views;
