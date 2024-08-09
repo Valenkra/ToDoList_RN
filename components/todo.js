@@ -31,7 +31,7 @@ const ToDo = ({index, element, ToDos, setToDo}) => {
         <View style={getContainerStyle(checked)}>
             <CheckBox onPress={change} checkedIcon='dot-circle-o' checkedColor={Colors.orange} uncheckedIcon='circle-o' checked={checked}/>
             <Text style={getLabelStyle(checked)}>{element.contenido}</Text>
-            <CheckBox onPress={eliminar} uncheckedIcon='clear' checkedIcon='clear' iconRight iconType='material' checkedColor='red' checked={false}/>
+            <CheckBox onPress={eliminar} uncheckedIcon='clear' checkedIcon='clear' style={styles.toTheEnd} iconRight iconType='material' checkedColor='red' checked={false}/>
         </View>
     )
 }
@@ -62,6 +62,9 @@ const styles = StyleSheet.create({
     },
     unchecked: {
 
+    },
+    toTheEnd: {
+        alignSelf:'flex-end'
     }
 })
 

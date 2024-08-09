@@ -6,9 +6,12 @@ import { useState } from 'react';
 import ListToDo from './components/listToDo.js';
 import { ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry.js';
+import { useEffect } from 'react';
 
 export default function App() {
-  const [ToDos, setToDos] = useState(AsyncStorage.getItem("TODO") ? JSON.parse(AsyncStorage.getItem("TODO")) : []);
+  const [ToDos, setToDos] = useState((AsyncStorage.getItem("TODO")["_h"] != 0)? JSON.parse(AsyncStorage.getItem("TODO")) : []);
+
   useEffect(()=> {
     if(ToDos){
       AsyncStorage.setItem("TODO", JSON.stringify(ToDos));
