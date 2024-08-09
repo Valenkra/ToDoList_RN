@@ -2,24 +2,29 @@ import { TextInput, StyleSheet } from "react-native";
 import { View } from "react-native";
 import { Colors } from "../resources/Colors";
 import { scale } from "react-native-size-matters";
-import MyButton from "./Button";
+import { TouchableWithoutFeedback, Keyboard } from "react-native";
+import MyButton from "./MyButton"
 
 const InputValues = ({ToDos, setToDos}) => {
     const submiting = (e) => {
-        setToDos([...ToDos, {
+        setToDos([{
             contenido: e.nativeEvent.text,
             tachado: false,
             fechaYhoraCreacion: new Date(),
             fechaYhoraTachado: false
-          }]);
+          }, ...ToDos]);
     }
     return (
+
         <View>
-            <TextInput
-            placeholder="¿Qué necesitas hacer?" 
-            style={styles.input}
-            onSubmitEditing={submiting}/>
-            <MyButton sendText="Enviar"></MyButton>
+             <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+                <View style={styles.container}>
+                    <TextInput
+                        placeholder="¿Qué necesitas hacer?" 
+                        style={styles.input}
+                        onSubmitEditing={submiting}/>
+                </View>
+            </TouchableWithoutFeedback>
         </View>
     );
 }

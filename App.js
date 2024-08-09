@@ -9,6 +9,7 @@ import { TextInput } from 'react-native';
 import { InfoIcon } from './resources/Icons.js';
 import { useState } from 'react';
 import ListToDo from './components/listToDo.js';
+import { ScrollView } from 'react-native';
 
 
 export default function App() {
@@ -19,7 +20,12 @@ export default function App() {
         <View style={styles.header}>
           <Text style={{fontSize: scale(30), fontWeight: 600, color: Colors.orange}}>To Do's</Text>
         </View>
-        <ListToDo ToDos={ToDos} setToDo={setToDos}></ListToDo>
+        <View style={styles.fixedContainer}>
+          <ScrollView>
+            <ListToDo ToDos={ToDos} setToDo={setToDos}></ListToDo>
+          </ScrollView>
+        </View>
+        
         <InputValues ToDos={ToDos} setToDos={setToDos}></InputValues>
       </SafeAreaView>
   );
@@ -53,5 +59,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     maxHeight: verticalScale(50),
     marginBottom: verticalScale(20)
+  },
+  fixedContainer: {
+    width: '100%',
+    height: verticalScale(200),
   }
 });

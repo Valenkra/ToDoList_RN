@@ -15,30 +15,42 @@ const ToDo = ({element}) => {
             (isChecked == true) ? styles.checked : styles.unchecked]
     }
 
+    const getLabelStyle = (isChecked) => {
+        return [styles.label, 
+            (isChecked == true) ? styles.checked : styles.unchecked]
+    }
+
     return (
         <View style={getContainerStyle(checked)}>
-            <CheckBox onPress={change} checkedIcon='dot-circle-o' uncheckedIcon='circle-o' checked={checked}/>
-            <Text style={styles.label}>{element.contenido}</Text>
+            <CheckBox onPress={change} checkedIcon='dot-circle-o' checkedColor={Colors.orange} uncheckedIcon='circle-o' checked={checked}/>
+            <Text style={getLabelStyle(checked)}>{element.contenido}</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        display: 'flex',
+        flex:1,
         marginTop: verticalScale(20),
         alignContent: 'center',
         flexDirection: 'row',
         justifyContent: 'flex-start',
         backgroundColor: Colors.white,
         width: '80%',
-        backgroundColor: Colors.white
+        backgroundColor: Colors.white,
+        paddingVertical: verticalScale(5),
+        borderRadius: scale(3),
+
     },
     label: {
         fontSize: scale(15.4),
-        color: Colors.black
+        color: Colors.black,
+        paddingTop: verticalScale(13)
     },
     checked: {
+        backgroundColor: Colors.grey,
+        color: Colors.white,
+        textDecorationLine: 'line-through',
 
     },
     unchecked: {
