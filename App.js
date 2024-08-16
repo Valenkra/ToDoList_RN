@@ -18,21 +18,19 @@ export default function App() {
     }
   }, [ToDos])
 
-  console.log(ToDos)
-
 
   return (
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <Text style={{fontSize: scale(30), fontWeight: 600, color: Colors.orange}}>To Do's</Text>
         </View>
+        <InputValues ToDos={ToDos} setToDos={setToDos}></InputValues>
         <View style={styles.fixedContainer}>
           <ScrollView>
             <ListToDo ToDos={ToDos} setToDo={setToDos}></ListToDo>
           </ScrollView>
         </View>
         
-        <InputValues ToDos={ToDos} setToDos={setToDos}></InputValues>
       </SafeAreaView>
   );
 }
@@ -68,6 +66,6 @@ const styles = StyleSheet.create({
   },
   fixedContainer: {
     width: '100%',
-    height: verticalScale(200),
+    height: verticalScale(400),
   }
 });

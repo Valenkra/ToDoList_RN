@@ -11,7 +11,7 @@ const MyButton = ({sendText}) => {
 
 const styles = StyleSheet.create({
     btn: {
-        backgroundColor: '#000000'
+        backgroundColor: '#000000',
     }
 });
 
